@@ -1,7 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var addImage = `<img src="${message.image}">`
-    // イメージがあれば、<imgタグと、イメージが出るようにする。（三項演算子、← 条件分岐（if文でかく、イメージタグの使い方？
+    var addImage = message.image?`<img src="${message.image}">`: "";
       var html = `
       <div class="message" data-message-id="${message.id}">
         <div class="upper-message" data-message-id="${message.id}">
@@ -33,11 +32,11 @@ $(function() {
     .done(function(message) {
       var html = buildHTML(message);
       $('.messages').append(html);
-      // $(".messages").animate({scrollTop:$('#new_message').offset().top});
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      $('#new_message')[0].reset()
     })
     .fail(function() {
-      alert('error');
+      alert('メッセージを入力して下さい');
     });
   });
 });
