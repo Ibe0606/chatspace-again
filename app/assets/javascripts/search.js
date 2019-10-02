@@ -54,10 +54,9 @@ function appendProduct(user) {
   
   $(".user-search-result").on('click', '.user-search-add', function(){
     $(this).parent().remove()
-    var name = $(this).attr('data-user-name');
-    var id = $(this).attr('data-user-id');
+    var name = $(this).date('user-name');
+    var id = $(this).date('user-id');
     var user = appendAddProduct(name, id)
-    console.log(user);
     $('.chat-group-users').append(user)
 
   });
