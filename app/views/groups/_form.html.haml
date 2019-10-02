@@ -27,7 +27,7 @@
         .chat-group-user
           .currrent_user
             = current_user.name
-          %input{:name => "group[user_ids][]", :type => "hidden",:value => current_user.id,}
+          = f.hidden_field :user_ids, name: "group[user_ids][]", value: current_user.id, multiple: true
     
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
