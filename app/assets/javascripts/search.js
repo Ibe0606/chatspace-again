@@ -10,7 +10,7 @@ function appendProduct(user) {
     users_list.append(html);             
   }
 
-  $(".chat-group-form__input").on("keyup", function() {
+  $(".chat-group-form__input").on("input", function() {
     var input = $(this).val();
 
     $.ajax({
@@ -44,7 +44,7 @@ function appendProduct(user) {
     return html;             
   }
   function appendRemoveProduct(name, id) {
-    var html = `<div class='chat-group-user'>
+    var html = `<div class='chat-group-users'>
                   <input name='group[user_ids][]' type='hidden' value="${id}">
                   <p class='chat-group-user__name'>${name}</p>
                   <div class='user-search-add chat-group-user__btn chat-group-user__btn--add js-remove-btn'>追加</div>
@@ -58,15 +58,11 @@ function appendProduct(user) {
     var id = $(this).attr('data-user-id');
     var user = appendAddProduct(name, id)
     console.log(user);
-    $('.chat-group-user').append(user)
+    $('.chat-group-users').append(user)
 
   });
 
-  $(".chat-group-user").on('click', '.user-search-remove', function(){
+  $(".chat-group-users").on('click', '.user-search-remove', function(){
     $(this).parent().remove()
-    // var name = $(this).attr('data-user-name');
-    // var id = $(this).attr('data-user-id');
-    // var user = appendRemoveProduct(name, id)
-    // $('.user-search-result').append(user)
   });
 });
