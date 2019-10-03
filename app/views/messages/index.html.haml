@@ -6,15 +6,15 @@
     .header
       .left-header
         .left-header__title
-          グループ名
+          = @group.name
         .left-header__members
           Member：
           -@group.users.each do |user|
             = user.name
-
-      .right-header
-        .right-header__button
-          Edit
+      = link_to edit_group_path(@group.id) do
+        .right-header
+          .right-header__button
+            Edit
     .messages
       = render @messages
     .form
